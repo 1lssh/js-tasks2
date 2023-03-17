@@ -1,0 +1,1 @@
+let scrollWidth = elem.offsetWidth - elem.clientWidth;

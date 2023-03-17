@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta charset="utf-8">
+</head>
+
+<body>
+	<style>
+		.arrow-bottom {
+			display: none;
+		}
+
+		.arrow-bottom.active {
+			display: inline;
+		}
+
+		.arrow-right.active {
+			display: none;
+		}
+
+		.title ul {
+			display: none;
+		}
+
+		.title.active ul {
+			display: block;
+		}
+
+		.list {
+			margin: 0;
+		}
+	</style>
+
+	<div id="title" class="title">
+		<span id="arr-right" class=" arrow-right">
+			▶
+		</span>
+		<span id="arr-bottom" class=" arrow-bottom">
+			▼
+		</span>
+		<span id="btn">Сладости (нажми меня)!</span>
+		<ul id="list" class="list">
+			<li>Пирожное</li>
+			<li>Пончик</li>
+			<li>Мёд</li>
+		</ul>
+	</div>
+
+
+	<script>
+		let title = document.getElementById("title")
+		let list = document.getElementById("list");
+		document.getElementById("btn").onclick = function change() {
+			title.classList.toggle('active');
+			document.getElementById("arr-right").classList.toggle('active')
+			document.getElementById("arr-bottom").classList.toggle('active')
+		}
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,1 @@
+let scrollBottom = elem.scrollHeigh - elem.scrollTop - elem.clientHeight;;
