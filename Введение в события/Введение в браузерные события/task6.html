@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="style.css">
+	<style>
+		.container {
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
+			background: rgba(0, 0, 0, 0.1);
+			border-radius: 8px;
+			width: 450px;
+			margin: auto
+		}
+
+		.img-container {
+			width: 385px;
+			overflow: hidden;
+		}
+
+		ul {
+			transition: all 0.4s ease-in-out
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<button id="btn-right" class="arrow">⇦</button>
+
+		<div class="img-container">
+			<ul id="img-list">
+				<li><img src="https://ru.js.cx/carousel/1.png"></li>
+				<li><img src="https://ru.js.cx/carousel/2.png"></li>
+				<li><img src="https://ru.js.cx/carousel/3.png"></li>
+				<li><img src="https://ru.js.cx/carousel/4.png"></li>
+				<li><img src="https://ru.js.cx/carousel/5.png"></li>
+				<li><img src="https://ru.js.cx/carousel/6.png"></li>
+				<li><img src="https://ru.js.cx/carousel/7.png"></li>
+				<li><img src="https://ru.js.cx/carousel/8.png"></li>
+				<li><img src="https://ru.js.cx/carousel/9.png"></li>
+				<li><img src="https://ru.js.cx/carousel/10.png"></li>
+			</ul>
+		</div>
+		<button id="btn-left" class="arrow">⇨</button>
+	</div>
+
+	<script>
+		const btnLeft = document.getElementById('btn-left')
+		const btnRight = document.getElementById('btn-right')
+		const list = document.getElementById('img-list')
+
+		const width = 130
+		const count = 3
+		let translateX = 0
+		const imgCount = document.querySelectorAll('li').length;
+		let imgHiddenLeft = 0
+
+		btnLeft.onclick = () => {
+			const cond = imgCount - imgHiddenLeft
+			switch (true) {
+				case cond === count + 2:
+					translateX -= width * 2;
+					imgHiddenLeft += 2;
+					break;
+				case cond === count + 1:
+					translateX -= width;
+					imgHiddenLeft += 1;
+					break;
+				case cond <= count: break;
+				default: translateX -= width * count; imgHiddenLeft += count;
+			}
+
+			list.style.transform = `translateX(${translateX}px)`
+		}
+
+		btnRight.onclick = () => {
+			const cond = imgCount - imgHiddenLeft
+			switch (true) {
+				case cond === imgCount - 2:
+					translateX += width * 2;
+					imgHiddenLeft -= 2;
+					break;
+				case cond === imgCount - 1:
+					translateX += width;
+					imgHiddenLeft -= 1;
+					break;
+				case cond >= imgCount: break;
+				default: translateX += width * count; imgHiddenLeft -= count;
+			}
+
+			list.style.transform = `translateX(${translateX}px)`
+		}
+	</script>
+
+</body>
+
+</html>
